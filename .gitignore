@@ -1,0 +1,13 @@
+# folders
+input/
+venv/
+aug_images/
+dataset/
+
+
+# files
+challenges-in-representation-learning-facial-expression-recognition-challenge.zip
+Computer-Vision-Engineer-task.pdf
+activate-venv.bat
+aug*.png
+
