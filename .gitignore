@@ -3,6 +3,9 @@ input/
 venv/
 aug_images/
 dataset/
+haarcascades/
+cropped-faces/
+__pycache__/
 
 
 # files
