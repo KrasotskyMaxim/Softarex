@@ -3,17 +3,12 @@ import json
 
 def get_user(filename, labels):
     try:
-        f = open('log.txt', 'a')
-        f.write(f"{filename}\n\n")
-        for label in labels:
-            msg = f'{label[0][1][:5]}, ... -  {label[1]}\n\n'
-            f.write(msg)
+        with open('log.json', 'a') as f:
+        # f.write(f"{filename}\n\n")
+            json.dump(labels, f, indent=4)
         print("Log write in file!")
     except Exception as e:
         print(e.__str__())
-    finally:
-        f.close()
-
     
 
 if __name__ == "__main__":

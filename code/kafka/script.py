@@ -9,7 +9,7 @@ import glob
 
 def main():
     ''' Run a script to get a registed emotions of users '''
-    f = open('log.txt', 'w')
+    f = open('log.json', 'w')
     f.close()
     try:
         working_directory = sys.argv[1]

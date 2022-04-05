@@ -88,7 +88,7 @@ class EmotionClassificator:
                 plt.imshow(self.predict_dataset[show_cnt], interpolation='nearest')
                 plt.show()
                 show_cnt += 1
-            final_predict.append((img, label))
+            final_predict.append(label)
         return final_predict
 
 

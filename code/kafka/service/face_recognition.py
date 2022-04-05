@@ -22,7 +22,7 @@ class FaceRecognizer:
         
         result = self.faces
         self.faces = []
-        return result
+        return (result, face_coordinates)
 
     def _get_face_coordinates(self, img):
         ''' Get path to image and detect face coordinates on it '''

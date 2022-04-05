@@ -1,0 +1,582 @@
+[
+    {
+        "box": {
+            "x": 33,
+            "y": 456,
+            "width": 153,
+            "height": 153
+        },
+        "label": "Fear"
+    },
+    {
+        "box": {
+            "x": 181,
+            "y": 457,
+            "width": 150,
+            "height": 150
+        },
+        "label": "Disgust"
+    },
+    {
+        "box": {
+            "x": 332,
+            "y": 465,
+            "width": 151,
+            "height": 151
+        },
+        "label": "Happy"
+    },
+    {
+        "box": {
+            "x": 41,
+            "y": 225,
+            "width": 144,
+            "height": 144
+        },
+        "label": "Neutral"
+    },
+    {
+        "box": {
+            "x": 480,
+            "y": 462,
+            "width": 144,
+            "height": 144
+        },
+        "label": "Angry"
+    },
+    {
+        "box": {
+            "x": 189,
+            "y": 227,
+            "width": 140,
+            "height": 140
+        },
+        "label": "Angry"
+    },
+    {
+        "box": {
+            "x": 333,
+            "y": 216,
+            "width": 144,
+            "height": 144
+        },
+        "label": "Happy"
+    },
+    {
+        "box": {
+            "x": 474,
+            "y": 220,
+            "width": 141,
+            "height": 141
+        },
+        "label": "Sad"
+    },
+    {
+        "box": {
+            "x": 324,
+            "y": 327,
+            "width": 162,
+            "height": 162
+        },
+        "label": "Happy"
+    }
+][
+    {
+        "box": {
+            "x": 68,
+            "y": 822,
+            "width": 113,
+            "height": 113
+        },
+        "label": "Surprise"
+    },
+    {
+        "box": {
+            "x": 332,
+            "y": 821,
+            "width": 113,
+            "height": 113
+        },
+        "label": "Fear"
+    },
+    {
+        "box": {
+            "x": 586,
+            "y": 823,
+            "width": 109,
+            "height": 109
+        },
+        "label": "Happy"
+    },
+    {
+        "box": {
+            "x": 841,
+            "y": 821,
+            "width": 109,
+            "height": 109
+        },
+        "label": "Disgust"
+    },
+    {
+        "box": {
+            "x": 327,
+            "y": 562,
+            "width": 112,
+            "height": 112
+        },
+        "label": "Happy"
+    },
+    {
+        "box": {
+            "x": 841,
+            "y": 559,
+            "width": 116,
+            "height": 116
+        },
+        "label": "Happy"
+    },
+    {
+        "box": {
+            "x": 585,
+            "y": 562,
+            "width": 115,
+            "height": 115
+        },
+        "label": "Sad"
+    },
+    {
+        "box": {
+            "x": 74,
+            "y": 572,
+            "width": 103,
+            "height": 103
+        },
+        "label": "Sad"
+    },
+    {
+        "box": {
+            "x": 107,
+            "y": 302,
+            "width": 102,
+            "height": 102
+        },
+        "label": "Angry"
+    },
+    {
+        "box": {
+            "x": 592,
+            "y": 310,
+            "width": 100,
+            "height": 100
+        },
+        "label": "Angry"
+    },
+    {
+        "box": {
+            "x": 839,
+            "y": 298,
+            "width": 118,
+            "height": 118
+        },
+        "label": "Happy"
+    },
+    {
+        "box": {
+            "x": 331,
+            "y": 305,
+            "width": 109,
+            "height": 109
+        },
+        "label": "Happy"
+    },
+    {
+        "box": {
+            "x": 321,
+            "y": 49,
+            "width": 111,
+            "height": 111
+        },
+        "label": "Fear"
+    },
+    {
+        "box": {
+            "x": 75,
+            "y": 63,
+            "width": 102,
+            "height": 102
+        },
+        "label": "Happy"
+    },
+    {
+        "box": {
+            "x": 583,
+            "y": 66,
+            "width": 96,
+            "height": 96
+        },
+        "label": "Angry"
+    },
+    {
+        "box": {
+            "x": 843,
+            "y": 64,
+            "width": 102,
+            "height": 102
+        },
+        "label": "Sad"
+    },
+    {
+        "box": {
+            "x": 346,
+            "y": 113,
+            "width": 72,
+            "height": 72
+        },
+        "label": "Angry"
+    }
+][
+    {
+        "box": {
+            "x": 694,
+            "y": 10,
+            "width": 67,
+            "height": 67
+        },
+        "label": "Happy"
+    },
+    {
+        "box": {
+            "x": 466,
+            "y": 149,
+            "width": 70,
+            "height": 70
+        },
+        "label": "Happy"
+    },
+    {
+        "box": {
+            "x": 245,
+            "y": 154,
+            "width": 71,
+            "height": 71
+        },
+        "label": "Happy"
+    },
+    {
+        "box": {
+            "x": 243,
+            "y": 285,
+            "width": 70,
+            "height": 70
+        },
+        "label": "Happy"
+    },
+    {
+        "box": {
+            "x": 44,
+            "y": 153,
+            "width": 70,
+            "height": 70
+        },
+        "label": "Happy"
+    },
+    {
+        "box": {
+            "x": 693,
+            "y": 298,
+            "width": 71,
+            "height": 71
+        },
+        "label": "Happy"
+    },
+    {
+        "box": {
+            "x": 844,
+            "y": 153,
+            "width": 74,
+            "height": 74
+        },
+        "label": "Happy"
+    },
+    {
+        "box": {
+            "x": 59,
+            "y": 306,
+            "width": 68,
+            "height": 68
+        },
+        "label": "Neutral"
+    },
+    {
+        "box": {
+            "x": 266,
+            "y": 441,
+            "width": 69,
+            "height": 69
+        },
+        "label": "Happy"
+    },
+    {
+        "box": {
+            "x": 71,
+            "y": 17,
+            "width": 69,
+            "height": 69
+        },
+        "label": "Neutral"
+    },
+    {
+        "box": {
+            "x": 645,
+            "y": 444,
+            "width": 71,
+            "height": 71
+        },
+        "label": "Happy"
+    },
+    {
+        "box": {
+            "x": 458,
+            "y": 441,
+            "width": 76,
+            "height": 76
+        },
+        "label": "Happy"
+    },
+    {
+        "box": {
+            "x": 283,
+            "y": 15,
+            "width": 75,
+            "height": 75
+        },
+        "label": "Neutral"
+    },
+    {
+        "box": {
+            "x": 863,
+            "y": 308,
+            "width": 71,
+            "height": 71
+        },
+        "label": "Neutral"
+    },
+    {
+        "box": {
+            "x": 905,
+            "y": 15,
+            "width": 73,
+            "height": 73
+        },
+        "label": "Happy"
+    },
+    {
+        "box": {
+            "x": 856,
+            "y": 446,
+            "width": 76,
+            "height": 76
+        },
+        "label": "Disgust"
+    },
+    {
+        "box": {
+            "x": 462,
+            "y": 309,
+            "width": 71,
+            "height": 71
+        },
+        "label": "Sad"
+    },
+    {
+        "box": {
+            "x": 490,
+            "y": 19,
+            "width": 71,
+            "height": 71
+        },
+        "label": "Happy"
+    }
+][
+    {
+        "box": {
+            "x": 269,
+            "y": 115,
+            "width": 59,
+            "height": 59
+        },
+        "label": "Happy"
+    },
+    {
+        "box": {
+            "x": 87,
+            "y": 35,
+            "width": 77,
+            "height": 77
+        },
+        "label": "Neutral"
+    }
+][
+    {
+        "box": {
+            "x": 487,
+            "y": 459,
+            "width": 148,
+            "height": 148
+        },
+        "label": "Sad"
+    },
+    {
+        "box": {
+            "x": 475,
+            "y": 814,
+            "width": 172,
+            "height": 172
+        },
+        "label": "Sad"
+    },
+    {
+        "box": {
+            "x": 1180,
+            "y": 468,
+            "width": 177,
+            "height": 177
+        },
+        "label": "Angry"
+    },
+    {
+        "box": {
+            "x": 135,
+            "y": 475,
+            "width": 169,
+            "height": 169
+        },
+        "label": "Sad"
+    },
+    {
+        "box": {
+            "x": 840,
+            "y": 823,
+            "width": 163,
+            "height": 163
+        },
+        "label": "Sad"
+    },
+    {
+        "box": {
+            "x": 828,
+            "y": 483,
+            "width": 171,
+            "height": 171
+        },
+        "label": "Sad"
+    },
+    {
+        "box": {
+            "x": 126,
+            "y": 812,
+            "width": 177,
+            "height": 177
+        },
+        "label": "Fear"
+    },
+    {
+        "box": {
+            "x": 1202,
+            "y": 826,
+            "width": 166,
+            "height": 166
+        },
+        "label": "Sad"
+    },
+    {
+        "box": {
+            "x": 446,
+            "y": 240,
+            "width": 51,
+            "height": 51
+        },
+        "label": "Sad"
+    },
+    {
+        "box": {
+            "x": 494,
+            "y": 118,
+            "width": 162,
+            "height": 162
+        },
+        "label": "Sad"
+    },
+    {
+        "box": {
+            "x": 842,
+            "y": 115,
+            "width": 167,
+            "height": 167
+        },
+        "label": "Sad"
+    },
+    {
+        "box": {
+            "x": 131,
+            "y": 130,
+            "width": 175,
+            "height": 175
+        },
+        "label": "Sad"
+    },
+    {
+        "box": {
+            "x": 1192,
+            "y": 137,
+            "width": 160,
+            "height": 160
+        },
+        "label": "Sad"
+    },
+    {
+        "box": {
+            "x": 841,
+            "y": 1161,
+            "width": 173,
+            "height": 173
+        },
+        "label": "Sad"
+    },
+    {
+        "box": {
+            "x": 479,
+            "y": 1187,
+            "width": 177,
+            "height": 177
+        },
+        "label": "Neutral"
+    },
+    {
+        "box": {
+            "x": 1192,
+            "y": 1204,
+            "width": 177,
+            "height": 177
+        },
+        "label": "Angry"
+    },
+    {
+        "box": {
+            "x": 121,
+            "y": 1176,
+            "width": 188,
+            "height": 188
+        },
+        "label": "Sad"
+    },
+    {
+        "box": {
+            "x": 1370,
+            "y": 182,
+            "width": 35,
+            "height": 35
+        },
+        "label": "Disgust"
+    }
+]
