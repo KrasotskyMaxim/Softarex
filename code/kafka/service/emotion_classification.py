@@ -3,9 +3,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import cv2
 
-from PIL import Image
-from .tools import get_images_filenames_from_dir
-
 
 class EmotionClassificator:
     __emotions = ['Angry','Disgust','Fear','Happy','Sad','Surprise','Neutral']
@@ -27,6 +24,7 @@ class EmotionClassificator:
         X_predict = self.reshape_dataset(self.predict_dataset)
         results = self.predict_emotions(X=X_predict)
         emotion_classification = self.make_final_predict(results=results, X_predict=X_predict)
+        self.predict_dataset = []
         return emotion_classification
 
     def predict_emotions(self, X):
@@ -43,7 +41,7 @@ class EmotionClassificator:
         model = model_from_json(loaded_model_json)
         # load weights into new model
         model.load_weights(weights_path)
-        print("Loaded model from disk")
+        print("Loaded model from disk\n")
         return model
 
     def convert_image(self, img, show_image: bool = False):
@@ -90,7 +88,7 @@ class EmotionClassificator:
                 plt.imshow(self.predict_dataset[show_cnt], interpolation='nearest')
                 plt.show()
                 show_cnt += 1
-            final_predict.append(label)
+            final_predict.append((img, label))
         return final_predict
 
 
