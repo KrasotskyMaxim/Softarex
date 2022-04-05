@@ -1,4 +1,3 @@
-from webbrowser import get
 from kafka import KafkaProducer
 # import json
 from data import get_emotion_labels
@@ -11,6 +10,12 @@ import time
 
 # producer = KafkaProducer(bootstrap_servers=['192.168.0.10:9092'],
 #                          value_serializer=json_serializer)
+
+def start_registed_users(path: str) -> list:
+    ''' Return an emotions of registed users '''
+    registed_users = get_emotion_labels(img_path=path)
+    return registed_users
+
 
 if __name__ == "__main__":
     # while True:

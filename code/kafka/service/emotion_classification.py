@@ -10,9 +10,8 @@ from .tools import get_images_filenames_from_dir
 class EmotionClassificator:
     __emotions = ['Angry','Disgust','Fear','Happy','Sad','Surprise','Neutral']
 
-    def __init__(self, paths: list = ["models/modelAugClass1SWFinned.json",
-                                        "models/modelAugClass1SWFinned.h5"]) -> None:
-        self.model = EmotionClassificator._load_model(model_path=paths[0], weights_path=paths[1])
+    def __init__(self, model_paths: list) -> None:
+        self.model = EmotionClassificator._load_model(model_path=model_paths[0], weights_path=model_paths[1])
         self.predict_dataset = [] # store images for predict
 
     def classify_emotions(self, dir_path: str):
@@ -76,17 +75,19 @@ class EmotionClassificator:
         plt.imshow(image, interpolation='nearest')
         plt.show()
 
-    def make_final_predict(self, results, X_predict, show_labels_and_images: bool = True):
+    def make_final_predict(self, results, X_predict, show_labels_and_images: bool = False):
         ''' Return a final predict labels list '''
         final_predict = []
         label = None
+        show_cnt = 0
         for r, img in zip(results, X_predict):
             emotion_number = list(r).index(max(r))
             label = EmotionClassificator.__emotions[emotion_number]
             if show_labels_and_images:
                 plt.title(label=label)
-                plt.imshow(img, interpolation='nearest')
+                plt.imshow(self.predict_dataset[show_cnt], interpolation='nearest')
                 plt.show()
+                show_cnt += 1
             final_predict.append(label)
         return final_predict
 

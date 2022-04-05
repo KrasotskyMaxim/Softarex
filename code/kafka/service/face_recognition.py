@@ -6,9 +6,9 @@ from .tools import get_images_filenames_from_dir
 
 class FaceRecognizer:
     __pose_counter = 0
-    __cropped_faces_dir = "cropped-faces/"
+    cropped_faces_dir = './cropped-faces/'
 
-    def __init__(self, trained_face_data: str = 'haarcascade_frontalface_default.xml') -> None:
+    def __init__(self, trained_face_data: str) -> None:
         self.__trained_face_data = cv2.CascadeClassifier(trained_face_data)
         self.__img_crop = []
 
@@ -25,7 +25,6 @@ class FaceRecognizer:
                     self.show_cropped_face(cropped=cropped)
                 self._save_cropped_face(cropped=cropped)
             self.__img_crop = []
-
 
     def _get_face_coordinates(self, img):
         ''' Get path to image and detect face coordinates on it '''
@@ -47,10 +46,10 @@ class FaceRecognizer:
         cv2.imshow("Cropped face", cropped)
 
     def _save_cropped_face(self, cropped, image_format: str = 'png'):
-        if not os.path.exists(FaceRecognizer.__cropped_faces_dir):
-            os.mkdir(FaceRecognizer.__cropped_faces_dir)
-        cv2.imwrite(FaceRecognizer.__cropped_faces_dir+"pose_result_{}.{}".format(FaceRecognizer.__pose_counter, image_format), cropped)
-        cv2.waitKey(500)
+        if not os.path.exists(FaceRecognizer.cropped_faces_dir):
+            os.mkdir(FaceRecognizer.cropped_faces_dir)
+        cv2.imwrite(FaceRecognizer.cropped_faces_dir+"pose_result_{}.{}".format(FaceRecognizer.__pose_counter, image_format), cropped)
+        cv2.waitKey(1)
         FaceRecognizer.__pose_counter += 1
 
 
