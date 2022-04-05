@@ -1,22 +1,28 @@
-from kafka import KafkaConsumer
-import json
+import glob
 
-def get_user(filename, labels):
-    try:
-        with open('log.json', 'a') as f:
-        # f.write(f"{filename}\n\n")
-            json.dump(labels, f, indent=4)
-        print("Log write in file!")
-    except Exception as e:
-        print(e.__str__())
+
+class Consumer:
+    def __init__(self, working_directory) -> None:
+        self.index = 0
+        self.working_directory = working_directory
+        self.filenames = []
+        
+    def check_new_images(self):
+        for image_format in ['jpg', 'png']:
+            images_list = glob.glob(self.working_directory+"*."+image_format)
+            self.filenames += [x for x in images_list if x not in self.filenames]
+
+    def poll(self):
+        self.check_new_images() 
+        try:
+            self.filenames[self.index]
+        except IndexError as ie:
+            return None 
+        index = self.index
+        self.index += 1
+        return self.filenames[index]
+            
     
 
 if __name__ == "__main__":
-    consumer = KafkaConsumer(
-        "registered_user",
-        bootstrap_servers='192.168.0.10:9092',
-        auto_offset_reset='earliest',
-        group_id="consumer-group-a")
-    print("starting the consumer")
-    for msg in consumer:
-        print("Registered User = {}".format(json.loads(msg.value)))
+    pass 

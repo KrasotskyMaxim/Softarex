@@ -1,25 +1,22 @@
-from kafka import KafkaProducer
-# import json
-import consumer
-import time
+import json
+import os
 
 
-# def json_serializer(data):
-#     return json.dumps(data).encode("utf-8")
+class Producer:
+    def __init__(self, to_save: str = 'log.json') -> None:
+         self.to_save = to_save
+         f = open(self.to_save, 'w')
+         f.close()
 
-
-# producer = KafkaProducer(bootstrap_servers=['192.168.0.10:9092'],
-#                          value_serializer=json_serializer)
-
-def send(filename, user) -> list:
-    ''' Return an emotions of registed users '''
-    consumer.get_user(filename, user)
-
+    def send(self, user) -> list:
+        ''' Return an emotions of registed users '''
+        try:
+            with open(self.to_save, 'a') as f:
+                json.dump(user, f, indent=4)
+            print("Log write in file!")
+        except Exception as e:
+            print(e.__str__())
+    
 
 if __name__ == "__main__":
-    # while True:
-    #     registered_user = get_emotion_labels()
-    #     print(registered_user)
-    #     # producer.send("registered_user", registered_user)
-    #     time.sleep(2)
     pass 
