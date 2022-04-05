@@ -14,9 +14,10 @@ class EmotionClassificator:
         self.model = EmotionClassificator._load_model(model_path=model_paths[0], weights_path=model_paths[1])
         self.predict_dataset = [] # store images for predict
 
-    def classify_emotions(self, dir_path: str):
+    def classify_emotions(self, data):
         ''' Answer what emotion a faces contains '''
-        cropped = get_images_filenames_from_dir(dir_name=dir_path, image_format='png')
+        # cropped = get_images_filenames_from_dir(dir_name=dir_path, image_format='png')
+        cropped = data 
         # fill predict dataset
         for f in cropped:
             np_image = self.convert_image(f)
@@ -47,9 +48,10 @@ class EmotionClassificator:
 
     def convert_image(self, img, show_image: bool = False):
         ''' Resize image into size 48x48, convert into numpy array and return it '''
-        image = Image.open(img)
-        resized_image = image.resize((48, 48))
-        np_image = np.asarray(resized_image)
+        # image = Image.open(img)
+        # resized_image = image.resize((48, 48))
+        np_image = cv2.resize(img, dsize=(48, 48), interpolation=cv2.INTER_CUBIC)
+        # np_image = np.asarray(resized_image)
         if show_image:
             EmotionClassificator._show_converted_image(np_image)
         return np_image
