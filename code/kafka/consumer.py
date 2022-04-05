@@ -1,6 +1,9 @@
 from kafka import KafkaConsumer
 import json
 
+def get_emotion_labels(labels):
+    print(labels)
+    
 
 if __name__ == "__main__":
     consumer = KafkaConsumer(
