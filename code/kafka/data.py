@@ -1,9 +1,9 @@
 
 
 
-def registrate_user(img_path: str, face_recognizer, emotion_classificator):
+def registrate_user(img: str, face_recognizer, emotion_classificator):
     # crop faces from images and save it in the directory
-    faces, coordinates = face_recognizer.recognize_faces(img_path=img_path)
+    faces, coordinates = face_recognizer.recognize_faces(img=img)
     # return an emotions in the cropped faces
     registed = emotion_classificator.classify_emotions(data=faces)
 

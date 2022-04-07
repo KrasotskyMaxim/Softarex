@@ -1,8 +1,11 @@
 import glob
+import cv2
+from kafka import KafkaConsumer
 
 
-class Consumer:
-    def __init__(self, working_directory) -> None:
+class Consumer(KafkaConsumer):
+    def __init__(self, working_directory, bootstrap_servers: str = "127.0.0.1:9095") -> None:
+        super().__init__(bootstrap_servers=bootstrap_servers)
         self.index = 0
         self.working_directory = working_directory
         self.filenames = []
@@ -17,10 +20,11 @@ class Consumer:
         try:
             self.filenames[self.index]
         except IndexError as ie:
-            return None 
+            return False 
         index = self.index
         self.index += 1
-        return self.filenames[index]
+        print(self.filenames[index])
+        return cv2.imread(self.filenames[index])
             
     
 

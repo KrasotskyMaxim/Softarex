@@ -1,0 +1,66 @@
+version: "2.3"
+
+services:
+  zookeeper:
+    image: zookeeper:3.5
+    container_name: zookeeper
+    ports:
+      - "${HOST_IP}:2181:2181"
+    volumes:
+      - "zookeeper-data:/data:rw"
+      - "zookeeper-datalog:/datalog:rw"
+    restart: unless-stopped
+    networks:
+    - processing-service-network
+
+  kafka:
+    image: bitnami/kafka:2-debian-9
+    container_name: kafka
+    environment:
+      KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_CFG_TOPIC_MAX_MESSAGE_BYTES: 10485760
+      KAFKA_CFG_REPLICA_FETCH_MAX_BYTES: 10485760
+      KAFKA_CFG_PRODUCER_MAX_REQUEST_SIZE: 10485760
+      KAFKA_CFG_CONSUMER_MAX_PARTITION_FETCH_BYTES: 10485760
+      KAFKA_CFG_LISTENERS: "EXTERNAL://:9095,PLAINTEXT://:9092"
+      KAFKA_CFG_ADVERTISED_LISTENERS: "EXTERNAL://${HOST_IP}:9095,PLAINTEXT://:9092"
+      KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: "EXTERNAL:PLAINTEXT,PLAINTEXT:PLAINTEXT"
+      KAFKA_CFG_ZOOKEEPER_CONNECT: "zookeeper:2181"
+      ALLOW_PLAINTEXT_LISTENER: "yes"
+    ports:
+      - "${HOST_IP}:9095:9095"
+    volumes:
+      - "kafka-data:/bitnami/kafka:rw"
+    depends_on:
+      - zookeeper
+    restart: unless-stopped
+    networks:
+    - processing-service-network
+
+  redis:
+    image: "redis:alpine"
+    container_name: redis
+    ports:
+      - "${HOST_IP}:6379:6379"
+    volumes:
+      - "./redis/redis-data:/var/lib/redis:rw"
+      - "./redis/config/redis.conf:/usr/local/etc/redis/redis.conf:rw"
+    environment:
+      - REDIS_REPLICATION_MODE=master
+    command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+    networks:
+    - processing-service-network
+
+networks:
+  processing-service-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.0.0/16
+
+volumes:
+  kafka-data:
+  zookeeper-data:
+  zookeeper-datalog:
+  redis-data:

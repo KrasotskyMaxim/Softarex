@@ -1,4 +1,3 @@
-from numpy import product
 from producer import Producer
 from consumer import Consumer
 from data import registrate_user
@@ -20,18 +19,18 @@ def main():
     # service
     consumer = Consumer(working_directory=working_directory)
     producer = Producer()
-    face_recognizer = FaceRecognizer(trained_face_data='haarcascade_frontalface_default.xml')
+    face_recognizer = FaceRecognizer(trained_face_data='./models/haarcascade_frontalface_default.xml')
     emotion_classificator = EmotionClassificator(model_paths=["./models/modelAugClass1SWFinned.json", "./models/modelAugClass1SWFinned.h5"])
     
     # # run service
     while True:
         image = consumer.poll()
-        print(image)
-        if not image:
+        # print(image)
+        if isinstance(image, bool):
             print("Waiting new images...")
             time.sleep(2)
             continue
-        users = registrate_user(img_path=image, face_recognizer=face_recognizer, emotion_classificator=emotion_classificator)
+        users = registrate_user(img=image, face_recognizer=face_recognizer, emotion_classificator=emotion_classificator)
         producer.send(users)
     
 

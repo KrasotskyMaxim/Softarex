@@ -1,4 +1,3 @@
-import os
 import cv2
 
 
@@ -10,9 +9,9 @@ class FaceRecognizer:
         self.__trained_face_data = cv2.CascadeClassifier(trained_face_data)
         self.faces = []
 
-    def recognize_faces(self, img_path: str, show_faces: bool = False):
+    def recognize_faces(self, img, show_faces: bool = False):
         ''' Extract images from dir and return cropped faces '''
-        img = cv2.imread(img_path)
+        # img = cv2.imread(img_path)
         face_coordinates = self._get_face_coordinates(img=img)
         self._add_crop_image(img=img, face_coordinates=face_coordinates)
 
