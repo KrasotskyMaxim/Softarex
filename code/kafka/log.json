@@ -1,0 +1,8 @@
+def gen(number: int, degree: int = 0):
+    yield number * degree
+    degree += 1
+    
+
+if __name__ == "__main__":
+    for i in gen(2):
+        print(i)

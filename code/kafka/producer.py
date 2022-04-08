@@ -1,24 +1,20 @@
 import json
 import time
 import datetime
-import config
 from kafka import KafkaProducer
 
 
 class Producer:
-    def __init__(self, to_save: str = 'log.json', bootstrap_servers: str = "127.0.0.1:9095") -> None:
+    def __init__(self, bootstrap_servers: str = "127.0.0.1:9095") -> None:
         # value_serializer=lambda m: json.dumps(m).encode()
         self.kafka_producer = KafkaProducer(
             bootstrap_servers=bootstrap_servers,
             value_serializer=lambda m: json.dumps(m).encode()
             )
-        self.to_save = to_save
-        f = open(self.to_save, 'w')
-        f.close()
 
-    def send(self, user) -> list:
+    def send(self, topic, user) -> list:
         ''' Return an emotions of registed users '''
-        self.kafka_producer.send(config.LABEL_TOPIC, user)
+        self.kafka_producer.send(topic, user)
         # try:
         #     with open(self.to_save, 'a') as f:
         #         json.dump(user, f, indent=4)

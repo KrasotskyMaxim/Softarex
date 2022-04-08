@@ -1,11 +1,12 @@
 from kafka import KafkaProducer
 import config
 import glob, time, json
+import cv2
 
 
-producer = KafkaProducer(
+kafka_producer = KafkaProducer(
     bootstrap_servers=config.SERVER,
-    value_serializer=lambda m: json.dumps(m).encode()
+    # value_serializer=lambda m: json.dumps(m).encode()
     )
 DIR = 'face-input/'
 filenames, index = [], 0
@@ -18,6 +19,14 @@ def check_new_filenames():
         filenames += [x for x in images_list if x not in filenames]
     # print(filenames)
 
+def make_value(path: str):
+    image = cv2.imread(path)
+    retval, buffer = cv2.imencode('.jpg', image, [int(cv2.IMWRITE_JPEG_QUALITY),40])
+    if not retval:
+        print("Error was occurred during image encoding") 
+    value = buffer.tobytes()
+    return value
+
 
 if __name__ == "__main__":
     while True:
@@ -28,7 +37,9 @@ if __name__ == "__main__":
             print("Waiting new images...")
             time.sleep(3)
             continue
-        producer.send(config.FILE_TOPIC, filenames[index])
-        print(filenames[index])
+        path = filenames[index]
+        print(path)
+        value = make_value(path=path)
+        kafka_producer.send(config.FILE_TOPIC, value)
         time.sleep(2)
         index += 1
