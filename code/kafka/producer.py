@@ -9,17 +9,17 @@ class Producer:
         # value_serializer=lambda m: json.dumps(m).encode()
         self.kafka_producer = KafkaProducer(
             bootstrap_servers=config.SERVER,
-            # value_serializer=lambda m: json.dumps(m).encode()
+            value_serializer=lambda m: json.dumps(m).encode()
             )
 
     def send(self, topic, user) -> list:
         ''' Return an emotions of registed users '''
-        image = cv2.imread(user)
-        retval, buffer = cv2.imencode('.jpg', image, [int(cv2.IMWRITE_JPEG_QUALITY),40])
-        if not retval:
-            print("Error was occurred during image encoding") 
-        value = buffer.tobytes()
-        self.kafka_producer.send(topic, value)
+        # image = cv2.imread(user)
+        # retval, buffer = cv2.imencode('.jpg', image, [int(cv2.IMWRITE_JPEG_QUALITY),40])
+        # if not retval:
+        #     print("Error was occurred during image encoding") 
+        # value = buffer.tobytes()
+        self.kafka_producer.send(topic, user)
         # try:
         #     with open(self.to_save, 'a') as f:
         #         json.dump(user, f, indent=4)
@@ -32,5 +32,5 @@ if __name__ == "__main__":
     producer = Producer(bootstrap_servers= "127.0.0.1:9095")
     for i in range(100):
         data = {'num': i, 'ts': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
-        producer.send(user=data)
+        producer.send(topic=config.FILE_TOPIC, user=data)
         time.sleep(2)

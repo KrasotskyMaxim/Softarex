@@ -19,7 +19,7 @@ def registrate_user(img: str, face_recognizer, emotion_classificator):
         box_and_labels["box"], box_and_labels["label"] = coords, l 
         # print(box_and_labels)
         result.append(box_and_labels)
-    print(result)
+    # print(result)
     return result
 
 
