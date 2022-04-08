@@ -1,4 +1,4 @@
-from producer import Producer
+# from producer import Producer
 from consumer import Consumer
 from data import registrate_user
 from service.face_recognition import FaceRecognizer
@@ -24,7 +24,7 @@ def main():
         working_directory=None,
     )
     # consumer = Consumer(topic=config.TOPIC, bootstrap_servers=config.SERVER, working_directory=working_directory)
-    producer = Producer(bootstrap_servers=config.SERVER)
+    # producer = Producer(bootstrap_servers=config.SERVER)
     face_recognizer = FaceRecognizer(trained_face_data='./models/haarcascade_frontalface_default.xml')
     emotion_classificator = EmotionClassificator(model_paths=["./models/modelAugClass1SWFinned.json", "./models/modelAugClass1SWFinned.h5"])
     

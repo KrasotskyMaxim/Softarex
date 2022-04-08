@@ -1,6 +1,6 @@
-import json
-import time
-import datetime
+import json, time, datetime
+import config
+import cv2
 from kafka import KafkaProducer
 
 
@@ -8,13 +8,18 @@ class Producer:
     def __init__(self, bootstrap_servers: str = "127.0.0.1:9095") -> None:
         # value_serializer=lambda m: json.dumps(m).encode()
         self.kafka_producer = KafkaProducer(
-            bootstrap_servers=bootstrap_servers,
-            value_serializer=lambda m: json.dumps(m).encode()
+            bootstrap_servers=config.SERVER,
+            # value_serializer=lambda m: json.dumps(m).encode()
             )
 
     def send(self, topic, user) -> list:
         ''' Return an emotions of registed users '''
-        self.kafka_producer.send(topic, user)
+        image = cv2.imread(user)
+        retval, buffer = cv2.imencode('.jpg', image, [int(cv2.IMWRITE_JPEG_QUALITY),40])
+        if not retval:
+            print("Error was occurred during image encoding") 
+        value = buffer.tobytes()
+        self.kafka_producer.send(topic, value)
         # try:
         #     with open(self.to_save, 'a') as f:
         #         json.dump(user, f, indent=4)
