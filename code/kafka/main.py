@@ -6,6 +6,7 @@ from service.emotion_classification import EmotionClassificator
 
 import sys
 import time
+import config
 
 
 def main():
@@ -17,19 +18,25 @@ def main():
         exit()
     
     # service
-    consumer = Consumer(working_directory=working_directory)
-    producer = Producer()
+    consumer = Consumer(
+        config.FILE_TOPIC, 
+        config.LABEL_TOPIC, 
+        bootstrap_servers="127.0.0.1:9095",
+        working_directory=None,
+    )
+    # consumer = Consumer(topic=config.TOPIC, bootstrap_servers=config.SERVER, working_directory=working_directory)
+    producer = Producer(bootstrap_servers=config.SERVER)
     face_recognizer = FaceRecognizer(trained_face_data='./models/haarcascade_frontalface_default.xml')
     emotion_classificator = EmotionClassificator(model_paths=["./models/modelAugClass1SWFinned.json", "./models/modelAugClass1SWFinned.h5"])
     
     # # run service
-    while True:
-        image = consumer.poll()
+    for msg in consumer.kafka_consumer:        
+        image = consumer.poll(msg=msg)
         # print(image)
-        if isinstance(image, bool):
-            print("Waiting new images...")
-            time.sleep(2)
-            continue
+        # if isinstance(image, bool):
+        #     print("Waiting new images...")
+        #     time.sleep(2)
+        #     continue
         users = registrate_user(img=image, face_recognizer=face_recognizer, emotion_classificator=emotion_classificator)
         producer.send(users)
     
