@@ -2,7 +2,9 @@
 
 def registrate_user(img: str, face_recognizer, emotion_classificator):
     # crop faces from images and save it in the directory
-    faces, coordinates = face_recognizer.recognize_faces(img=img)
+    image_name = list(img.keys())[0]
+    image = img[image_name]
+    faces, coordinates = face_recognizer.recognize_faces(img=image)
     # return an emotions in the cropped faces
     registed = emotion_classificator.classify_emotions(data=faces)
 
@@ -16,4 +18,4 @@ def registrate_user(img: str, face_recognizer, emotion_classificator):
         result.append(box_and_labels)
         
     # print(result)
-    return result
+    return {image_name: result}

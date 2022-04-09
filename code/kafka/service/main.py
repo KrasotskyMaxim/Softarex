@@ -13,7 +13,6 @@ def main():
     file_consumer = Consumer(
         config.FILE_TOPIC, 
         bootstrap_servers="127.0.0.1:9095",
-        working_directory=None,
     )
     
     producer = Producer(bootstrap_servers=config.SERVER)
@@ -22,9 +21,10 @@ def main():
     
     # run service
     for msg in file_consumer.kafka_consumer:
-        # print(msg.value)        
+        msg = eval(msg.value.decode())        
         image = file_consumer.poll(msg=msg)
         users = registrate_user(img=image, face_recognizer=face_recognizer, emotion_classificator=emotion_classificator)
+        users = str(users).encode()
         producer.send(topic=config.LABEL_TOPIC, user=users)
     else:
         print("Waiting message...")

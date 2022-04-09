@@ -20,6 +20,8 @@ class Consumer:
         
     def poll(self, msg: str):
         ''' Send a converted image to classificator '''
-        jpg_original = np.frombuffer(msg.value, np.uint8)
+        image_name = list(msg.keys())[0]
+        msg_value = msg[image_name]
+        jpg_original = np.frombuffer(msg_value, np.uint8)
         image = cv2.imdecode(jpg_original, 1)
-        return image
+        return {image_name: image}
