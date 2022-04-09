@@ -2,9 +2,6 @@ import cv2
 
 
 class FaceRecognizer:
-    # __pose_counter = 0
-    # cropped_faces_dir = './cropped-faces/'
-
     def __init__(self, trained_face_data: str) -> None:
         self.__trained_face_data = cv2.CascadeClassifier(trained_face_data)
         self.faces = []
@@ -41,13 +38,6 @@ class FaceRecognizer:
         ''' Print shape of cropped image and show cropped face '''
         print(cropped.shape)
         cv2.imshow("Cropped face", cropped)
-
-    # def _save_cropped_face(self, cropped, image_format: str = 'png'):
-    #     if not os.path.exists(FaceRecognizer.cropped_faces_dir):
-    #         os.mkdir(FaceRecognizer.cropped_faces_dir)
-    #     cv2.imwrite(FaceRecognizer.cropped_faces_dir+"pose_result_{}.{}".format(FaceRecognizer.__pose_counter, image_format), cropped)
-    #     cv2.waitKey(1)
-    #     FaceRecognizer.__pose_counter += 1
 
 
 

@@ -46,10 +46,7 @@ class EmotionClassificator:
 
     def convert_image(self, img, show_image: bool = False):
         ''' Resize image into size 48x48, convert into numpy array and return it '''
-        # image = Image.open(img)
-        # resized_image = image.resize((48, 48))
         np_image = cv2.resize(img, dsize=(48, 48), interpolation=cv2.INTER_CUBIC)
-        # np_image = np.asarray(resized_image)
         if show_image:
             EmotionClassificator._show_converted_image(np_image)
         return np_image

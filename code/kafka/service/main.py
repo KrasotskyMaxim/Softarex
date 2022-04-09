@@ -1,21 +1,14 @@
-from producer import Producer
-from consumer import Consumer
-from data import registrate_user
-from service.face_recognition import FaceRecognizer
-from service.emotion_classification import EmotionClassificator
+from .producer import Producer
+from .consumer import Consumer
+from .data_processing import registrate_user
+from .face_recognition import FaceRecognizer
+from .emotion_classification import EmotionClassificator
 
-import sys, time
-import config
+import configs.config as config
 
 
 def main():
     ''' Run a script to get a registed emotions of users '''
-    # try:
-    #     working_directory = sys.argv[1]
-    # except IndexError as ie:
-    #     print("You must to select a working directory!")
-    #     exit()
-    
     # service
     file_consumer = Consumer(
         config.FILE_TOPIC, 
@@ -23,7 +16,6 @@ def main():
         working_directory=None,
     )
     
-    # consumer = Consumer(topic=config.TOPIC, bootstrap_servers=config.SERVER, working_directory=working_directory)
     producer = Producer(bootstrap_servers=config.SERVER)
     face_recognizer = FaceRecognizer(trained_face_data='./models/haarcascade_frontalface_default.xml')
     emotion_classificator = EmotionClassificator(model_paths=["./models/modelAugClass1SWFinned.json", "./models/modelAugClass1SWFinned.h5"])
@@ -32,11 +24,6 @@ def main():
     for msg in file_consumer.kafka_consumer:
         # print(msg.value)        
         image = file_consumer.poll(msg=msg)
-        # print(image)
-        # if isinstance(image, bool):
-        #     print("Waiting new images...")
-        #     time.sleep(2)
-        #     continue
         users = registrate_user(img=image, face_recognizer=face_recognizer, emotion_classificator=emotion_classificator)
         producer.send(topic=config.LABEL_TOPIC, user=users)
     else:

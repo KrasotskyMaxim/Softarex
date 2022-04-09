@@ -1,14 +1,13 @@
 from kafka import KafkaProducer
-import config
-import glob, time, json
+import glob, time
 import cv2
-
+import configs.config as config
 
 kafka_producer = KafkaProducer(
     bootstrap_servers=config.SERVER,
     # value_serializer=lambda m: json.dumps(m).encode()
     )
-DIR = 'face-input/'
+DIR = './face-input/'
 filenames, index = [], 0
 
 
