@@ -1,5 +1,5 @@
 from kafka import KafkaProducer
-import glob, time, json
+import glob, time, re
 import cv2
 import configs.config as config
 
@@ -24,7 +24,10 @@ def make_value(path: str):
     if not retval:
         print("Error was occurred during image encoding") 
     value = buffer.tobytes()
-    return str({path: value}).encode()
+    # regEx to cut a image name from path
+    pattern = re.compile(r'[^\\]+\.(jpg|png)$')
+    image_name = pattern.search(path).group()
+    return str({image_name: value}).encode()
 
 
 if __name__ == "__main__":
