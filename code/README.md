@@ -1,0 +1,1 @@
+## In this project, I trained a facial emotion recognition model based on DenseNet201. A more detailed description of the training is presented in my notebook.
