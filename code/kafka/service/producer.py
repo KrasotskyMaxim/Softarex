@@ -13,5 +13,6 @@ class Producer:
     def send(self, topic, user) -> list:
         ''' Return an emotions of registed users '''
         self.kafka_producer.send(topic, user)
+        print("Send succesful!")
       
     
